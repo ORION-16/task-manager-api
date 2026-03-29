@@ -1,13 +1,14 @@
-const express = require("express");
-const app = express();
+const express = require("express")
+const app = express()
 
-//middleware
-app.use(express.json());
+app.use(express.json())
 
-//routes
-app.get("/",(req,res)=>{
-    res.end(JSON.stringify({
-        message:"API running"
-    }))
+const taskRoutes = require("./routes/task.routes")
+
+app.use(taskRoutes)
+
+app.get("/", (req, res) => {
+    res.json({ message: "Hello World" })
 })
-module.exports = app;
+
+module.exports = app
